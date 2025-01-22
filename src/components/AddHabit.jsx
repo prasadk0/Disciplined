@@ -52,7 +52,7 @@ export default function AddHabit() {
         {/* <ExportToExcel disabled={habits.length === 0} data={habits} /> */}
         </div>
                     <div className={`${config.habitList ? '' : 'hidden'}`} >
-                        <div className="inline-flex justify-normal items-center rounded-lg border border-gray-100 bg-gray-100 p-1">
+                        <div className="inline-flex text-black justify-normal items-center rounded-lg border border-gray-100 bg-gray-100 p-1">
                         <button  onClick={() => setCatgory('All')}
                                 className={`inline-block rounded-md  px-4 py-2 text-sm  shadow-sm focus:relative ${category==='All' ? 'text-blue-500  bg-white' : ''}`}
                             >
