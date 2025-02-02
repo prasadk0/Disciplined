@@ -7,7 +7,9 @@ const habitSlice = createSlice({
         mode:true,
         statistics:false,
         quotes:false,
-        habitList:true
+        habitList:true,
+        registered : false,
+        loggedIn:sessionStorage.getItem("token") ? true : false
     },
     reducers:{
         addHabit : (state,action)=>{
@@ -37,8 +39,20 @@ const habitSlice = createSlice({
             state.quotes = action.payload.quotes;
             state.habitList = action.payload.habitList;
         },
+        login:(state,action)=>{
+                if(!action.payload){
+                    sessionStorage.clear();
+                    state.loggedIn=false;
+                }
+                if(sessionStorage.getItem("token")){
+                    state.loggedIn=true;
+                }
+        },
+        registerClicked:(state,action)=>{
+          state.registered=action.payload;
+        }
     }
 })
 
 export default habitSlice.reducer;
-export const {addHabit,habitStatusChange,deleteHabit,toggleMode,displayCharts,displayQuotes,displayList}  =habitSlice.actions;
+export const {addHabit,habitStatusChange,deleteHabit,toggleMode,displayCharts,displayQuotes,displayList,login,registerClicked}  =habitSlice.actions;

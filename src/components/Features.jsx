@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun,faList,faChartSimple,faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
-import { toggleMode,displayCharts,displayQuotes,displayList } from "../redux/habitSlice";
+import { faMoon, faSun,faList,faChartSimple,faQuoteLeft,faNoteSticky,faArrowRightToBracket,faArrowRightFromBracket,faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { toggleMode,displayCharts,displayQuotes,displayList,registerClicked, login } from "../redux/habitSlice";
 import { useEffect } from "react";
 
 export  default function Features(){
@@ -15,7 +15,9 @@ export  default function Features(){
     <div className="flex flex-row justify-between gap-5">
       <div>
       {/* <p className="flex py-1  text-left justify-start">The keys to a Productive Lifestyle.</p> */}
+      <button onClick={()=>{dispatch(login(false));dispatch(registerClicked(false));}}><FontAwesomeIcon icon={faArrowRightFromBracket} /></button>
       </div>
+
     <div className=" flex flex-row gap-5">
     <button onClick={()=>dispatch(toggleMode())}><FontAwesomeIcon icon={mode===true ? faMoon : faSun } /></button>
     <button onClick={()=>dispatch(displayList({ statistics:false,quotes:false,habitList:true}))}><FontAwesomeIcon icon={faList} /></button>
@@ -25,6 +27,9 @@ export  default function Features(){
     <button onClick={()=>dispatch(displayCharts({  statistics:true,
         quotes:false,
         habitList:false}))}><FontAwesomeIcon icon={faChartSimple} /></button>
+        {/* <button onClick={()=>dispatch(displayCharts({  statistics:true,
+        quotes:false,
+        habitList:false}))}><FontAwesomeIcon icon={faNoteSticky} /></button> */}
     </div>
     </div>
     )
